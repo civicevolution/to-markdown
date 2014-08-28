@@ -155,13 +155,14 @@ var toMarkdown = function(string) {
     return '\n\n' + html.replace(/[ \t]+\n|\s+$/g, '');
   }
 
+  // CivicEvolution doesn't want to convert blockquotes to markdown - We need the attributes
   // Blockquotes
-  var deepest = /<blockquote\b[^>]*>((?:(?!<blockquote)[\s\S])*?)<\/blockquote>/gi;
-  while(string.match(deepest)) {
-    string = string.replace(deepest, function(str) {
-      return replaceBlockquotes(str);
-    });
-  }
+  //var deepest = /<blockquote\b[^>]*>((?:(?!<blockquote)[\s\S])*?)<\/blockquote>/gi;
+  //while(string.match(deepest)) {
+  //  string = string.replace(deepest, function(str) {
+  //    return replaceBlockquotes(str);
+  //  });
+  //}
 
   function replaceBlockquotes(html) {
     html = html.replace(/<blockquote\b[^>]*>([\s\S]*?)<\/blockquote>/gi, function(str, inner) {
